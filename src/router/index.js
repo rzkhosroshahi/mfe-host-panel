@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../components/Home';
 import EccApp from 'ecc/EccApp';
+import { routes as eccRoutes } from 'ecc/routes';
 import StorageApp from '../components/Storage/storage';
 Vue.use(VueRouter);
 
@@ -21,6 +22,7 @@ export const routes = [
         name: 'storage',
         component: StorageApp,
     },
+    ...eccRoutes,
 ];
 
 export const router = new VueRouter({
