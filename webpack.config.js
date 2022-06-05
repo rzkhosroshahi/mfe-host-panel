@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const CleanTerminalPlugin = require('clean-terminal-webpack-plugin');
 const path = require('path');
 require('dotenv').config({path: path.join(__dirname, '.env')});
 
@@ -12,11 +13,19 @@ const STORAGE_REMOTE = process.env.STORAGE_REMOTE;
 module.exports = {
   output: {
     publicPath: ASSET_PATH,
+    clean: true,
   },
 
   devServer: {
     port: 8080,
     historyApiFallback: true,
+    client: {
+      progress: true,
+      overlay: {
+        errors: true,
+        warnings: false,
+      },
+    },
   },
 
   module: {
@@ -67,5 +76,9 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
     }),
+    new CleanTerminalPlugin({
+      message: `🚀 mfe panel running on http://localhost:8080/`,
+      onlyInWatchMode: false
+    })
   ],
 };
