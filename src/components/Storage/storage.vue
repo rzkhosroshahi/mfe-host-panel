@@ -16,10 +16,17 @@ export default {
     this.setStatusThirdRendering(false);
   },
   watch: {
-    $route(to, from) {
-      if (to.name === from.name) {
-        UnMountStorage();
-        MountStorage('third');
+    $route(to) {
+      if (to.name === 'storage') {
+        const myEvent = new CustomEvent("changeRoute", {
+          detail: {
+            path: to.path,
+          },
+          bubbles: true,
+          cancelable: true,
+          composed: false,
+        })
+        document.dispatchEvent(myEvent);
       }
     },
   },
