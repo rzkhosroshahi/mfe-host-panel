@@ -1,21 +1,21 @@
 <template>
-  <component :is="layout">
-    <router-view />
-    <slot />
-  </component>
+  <div>
+    <div v-show="thirdRendering !== true">
+      <h1>MFE Panel</h1>
+      <router-view />
+      <slot />
+    </div>
+  </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'App',
-  data() {
-    return {
-      layout: this.$route.meta.layout || 'l-default',
-    };
-  },
-  watch: {
-    '$route.meta.layout'(value) {
-      this.layout = value || 'l-default';
-    },
+  computed: {
+    ...mapGetters([
+      'thirdRendering',
+    ])
   },
 };
 </script>
