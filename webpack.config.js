@@ -68,7 +68,7 @@ module.exports = {
         ...deps,
         vue: {
           singleton: true,
-          eager: true,
+          eager: false,
           version: deps.vue,
         },
       },
