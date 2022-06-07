@@ -1,4 +1,4 @@
-export default function (appName, loadApp, targetElement = 'reactApp') {
+export default function (appName, loadApp, targetElement = '#vueExApp') {
     return {
         name,
         data() {

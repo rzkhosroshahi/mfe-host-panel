@@ -7,8 +7,13 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/ecc">
+        <router-link to="/ecc" @click.native="onExternalLinksClick('/ecc')">
           ecc
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/ecc/servers" @click.native="onExternalLinksClick('/ecc/servers')">
+          servers
         </router-link>
       </li>
       <li>

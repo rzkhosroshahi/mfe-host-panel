@@ -1,7 +1,7 @@
-import registerReactApp from "../../Modules/registerReactApp";
+import registerApp from "../../Modules/registerApp";
 
 const loadApp = () => {
     return import('storage/StorageApp')
 };
 
-export default registerReactApp('StorageApp', loadApp);
+export default registerApp('StorageApp', loadApp, 'reactApp');

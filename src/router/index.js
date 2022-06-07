@@ -1,8 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../components/Home';
-import EccApp from 'ecc/EccApp';
-import {routes as eccRoutes} from 'ecc/routes';
+import EccApp from'../Apps/Ecc';
 import StorageApp from '../Apps/Storage';
 Vue.use(VueRouter);
 
@@ -13,7 +12,7 @@ export const routes = [
         component: Home,
     },
     {
-        path: '/ecc',
+        path: '/ecc*',
         name: 'ecc',
         component: EccApp,
     },
@@ -22,7 +21,6 @@ export const routes = [
         name: 'storage',
         component: StorageApp,
     },
-    ...eccRoutes,
 ];
 
 export const router = new VueRouter({
