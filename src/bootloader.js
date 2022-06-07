@@ -9,9 +9,8 @@ import { store } from './store';
 Vue.component('l-default', defaultLayout);
 
 new Vue({
-  el: "#content",
+  el: "#vueApp",
   router,
-  store,
   template: "<App/>",
   components: { App },
 });

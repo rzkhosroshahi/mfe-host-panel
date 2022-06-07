@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>mfe-host-panel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mfe-host-panel</title>
     <style>
         #app {
             display: flex;
@@ -17,10 +17,12 @@
     </style>
 </head>
 <body>
-  <div id="app">
-      <nav id="nav"></nav>
-      <div id="content"></div>
-      <div id="third"></div>
-  </div>
+<div id="app">
+    <nav id="nav"></nav>
+    <div id="root">
+        <div id="reactApp"></div>
+        <div id="vueApp"></div>
+    </div>
+</div>
 </body>
 </html>

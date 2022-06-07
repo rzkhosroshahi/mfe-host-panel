@@ -12,18 +12,36 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/storage">
+        <router-link to="/storage" @click.native="onExternalLinksClick('/storage')">
           storage
         </router-link>
       </li>
       <li>
-        <router-link to="/storage/help">
+        <router-link to="/storage/help" @click.native="onExternalLinksClick('/storage/help')">
           storage help
         </router-link>
       </li>
     </ul>
   </div>
 </template>
+<script>
+export default {
+  name: 'sideBar',
+  methods: {
+     onExternalLinksClick(to) {
+       const myEvent = new CustomEvent("changeRoute", {
+         detail: {
+           path: to,
+         },
+         bubbles: true,
+         cancelable: true,
+         composed: false,
+       })
+       document.dispatchEvent(myEvent);
+     },
+   },
+}
+</script>
 <style scoped>
 .nav {
   width: 200px;

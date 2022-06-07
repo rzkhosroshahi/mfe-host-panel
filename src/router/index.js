@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../components/Home';
 import EccApp from 'ecc/EccApp';
 import {routes as eccRoutes} from 'ecc/routes';
-import StorageApp from '../components/Storage/storage';
+import StorageApp from '../Apps/Storage';
 Vue.use(VueRouter);
 
 export const routes = [
