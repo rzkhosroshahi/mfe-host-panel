@@ -1,8 +1,11 @@
-export default function (appName, loadApp, targetElement = '#vueExApp') {
+import loadComponent from './loadComponent';
+
+export default function registerApp(appName, config, targetElement = '#vueExApp') {
     return {
-        name,
+        appName,
         data() {
             return {
+                element: document.createElement('script'),
                 appLoaded: false,
                 mountApp: null,
                 unMountApp: null,
@@ -10,7 +13,7 @@ export default function (appName, loadApp, targetElement = '#vueExApp') {
             };
         },
         created() {
-            this.loadApp()
+            this.loadApp();
         },
         beforeDestroy() {
             if (typeof this.unMountApp === 'function') {
@@ -20,16 +23,27 @@ export default function (appName, loadApp, targetElement = '#vueExApp') {
         methods: {
             loadApp() {
                 this.runningAppFailed = false;
-                loadApp()
-                    .then(({ boot: [MountApp, UnMountApp] }) => {
+                this.element.src = config.remoteUrl;
+                this.element.type = 'text/javascript';
+                this.element.async = true;
+
+                this.element.onload = async () => {
+                    try {
+                        const module = await loadComponent(config.scope, config.module)();
+                        const [MountApp, UnMountApp] = module.boot;
                         this.mountApp = MountApp;
                         this.unMountApp = UnMountApp;
                         this.appLoaded = true;
                         this.mountApp(targetElement);
-                    })
-                    .catch(() => {
+                    } catch (ex) {
+                        console.error(ex);
                         this.runningAppFailed = true;
-                    })
+                    }
+                };
+                this.element.onerror = () => {
+                    this.runningAppFailed = true;
+                };
+                document.head.appendChild(this.element);
             },
             refreshPage() {
                 window.location.reload();
@@ -43,6 +57,6 @@ export default function (appName, loadApp, targetElement = '#vueExApp') {
               </div>
               <div v-else>running ${appName} app</div>
           </div>
-        `
-    }
+        `,
+    };
 }

@@ -1,7 +1,11 @@
 import registerApp from "../../Modules/registerApp";
 
-const loadApp = () => {
-    return import('ecc/EccApp');
+const ECC_REMOTE = process.env.ECC_REMOTE;
+
+const config = {
+    remoteUrl: ECC_REMOTE,
+    scope: 'ecc',
+    module: './EccApp',
 };
 
-export default registerApp('ecc', loadApp);
+export default registerApp('ecc', config);

@@ -1,3 +1,4 @@
+const DotenvWebpack = require('dotenv-webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const CleanTerminalPlugin = require('clean-terminal-webpack-plugin');
@@ -6,9 +7,6 @@ require('dotenv').config({path: path.join(__dirname, '.env')});
 
 const deps = require("./package.json").dependencies;
 const ASSET_PATH = process.env.ASSET_PATH || 'http://localhost:8080/';
-
-const ECC_REMOTE = process.env.ECC_REMOTE;
-const STORAGE_REMOTE = process.env.STORAGE_REMOTE;
 
 module.exports = {
   output: {
@@ -59,10 +57,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "mfe_host_panel",
       filename: "remoteEntry.js",
-      remotes: {
-        'ecc': ECC_REMOTE,
-        'storage': STORAGE_REMOTE,
-      },
+      remotes: {},
       exposes: {},
       shared: {
         ...deps,
@@ -79,6 +74,7 @@ module.exports = {
     new CleanTerminalPlugin({
       message: `🚀 mfe panel running on http://localhost:8080/`,
       onlyInWatchMode: false
-    })
+    }),
+    new DotenvWebpack(),
   ],
 };
