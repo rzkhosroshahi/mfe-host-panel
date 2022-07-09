@@ -7,7 +7,8 @@ require('dotenv').config({path: path.join(__dirname, '.env')});
 
 const deps = require("./package.json").dependencies;
 const ASSET_PATH = process.env.ASSET_PATH || 'http://localhost:8080/';
-
+console.log('process.env.ECC_REMOTE >>', process.env.ECC_REMOTE);
+console.log('process.env.ASSET_PATH >>', process.env.ASSET_PATH);
 module.exports = {
   output: {
     publicPath: ASSET_PATH,
