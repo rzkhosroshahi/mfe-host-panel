@@ -76,6 +76,8 @@ module.exports = {
       message: `🚀 mfe panel running on http://localhost:8080/`,
       onlyInWatchMode: false
     }),
-    new DotenvWebpack(),
+    new DotenvWebpack({
+      systemvars: true,
+    }),
   ],
 };
