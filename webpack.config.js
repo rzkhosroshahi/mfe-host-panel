@@ -6,7 +6,7 @@ const path = require('path');
 require('dotenv').config({path: path.join(__dirname, '.env')});
 
 const deps = require("./package.json").dependencies;
-const ASSET_PATH = process.env.ASSET_PATH || 'http://localhost:8080/';
+const ASSET_PATH = process.env.ASSET_PATH || 'http://localhost:3000/';
 console.log('process.env.ECC_REMOTE >>', process.env.ECC_REMOTE);
 console.log('process.env.ASSET_PATH >>', process.env.ASSET_PATH);
 module.exports = {
@@ -16,7 +16,7 @@ module.exports = {
   },
 
   devServer: {
-    port: 8080,
+    port: 3000,
     historyApiFallback: true,
     client: {
       progress: true,
@@ -25,6 +25,7 @@ module.exports = {
         warnings: false,
       },
     },
+    static: ['static'],
   },
 
   module: {

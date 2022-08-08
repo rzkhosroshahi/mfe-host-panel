@@ -43,7 +43,7 @@ export default function registerApp(appName, config, targetElement = '#vueExApp'
                 this.element.onerror = () => {
                     this.runningAppFailed = true;
                 };
-                document.head.appendChild(this.element);
+                document.body.appendChild(this.element);
             },
             refreshPage() {
                 window.location.reload();

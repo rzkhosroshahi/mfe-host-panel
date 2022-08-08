@@ -1,0 +1,29 @@
+{
+  "name": "MFE Panel",
+  "short_name": "MFE PANEL",
+  "start_url": "./",
+  "theme_color": "#00baba",
+  "scope": "./",
+  "display": "standalone",
+  "description": "This app lets you add notes while you are coding",
+  "icons": [
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+
+
+  ]
+}

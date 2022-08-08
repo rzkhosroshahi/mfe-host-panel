@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "clean-terminal-webpack-plugin": "^3.0.0",
-    "dotenv-webpack": "^7.1.0",
+    "dotenv-webpack": "^8.0.0",
     "vue": "^2.6.14",
     "vue-router": "3",
     "vuex": "3"
